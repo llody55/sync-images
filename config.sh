@@ -3,6 +3,8 @@ echo "docker.io:" >> images.yaml
 echo "  images:" >> images.yaml
 # echo "    llody/udocker:" >> images.yaml
 # skopeo list-tags --tls-verify=false  docker://docker.io/llody/udocker | grep -v alpha | grep -v beta | grep -v rc | grep -v amd64 | grep -v ppc64le | grep -v arm64 | grep -v arm | grep -v s390x | grep -v SNAPSHOT | grep -v debug | grep -v master | grep -v main | grep -v \} | grep -v \] | grep -v \{ | grep -v Repository | grep -v Tags | grep -v dev | grep -v g | grep -v 0.8 | grep -v '-'| awk -F '"' '{print "    - "$2}' >> images.yaml
+# echo "    library/golang:" >> images.yaml
+skopeo list-tags --tls-verify=false  docker://library/golang | grep -v alpha | grep -v beta | grep -v rc | grep -v amd64 | grep -v ppc64le | grep -v arm64 | grep -v arm | grep -v s390x | grep -v SNAPSHOT | grep -v debug | grep -v master | grep -v main | grep -v \} | grep -v \] | grep -v \{ | grep -v Repository | grep -v Tags |grep -v alpine | grep -v bookworm  | grep -v dev | grep -v g | grep -v '-'| awk -F '"' '{print "    - "$2}' >> images.yaml
 # echo "    calico/cni:" >> images.yaml
 # skopeo list-tags --tls-verify=false  docker://docker.io/calico/cni | grep '"v' | awk '/v3/ {flag=1} flag' | grep -v -E 'alpha|beta|rc|amd64|ppc64le|arm64|arm|s390x|SNAPSHOT|debug|master|main|\}|\]|\{|Repository|Tags|dev|g|version|-' | awk -F '"' '{print $2}' | sort -V | awk -F. '$1 == "v3" && ($2 > 10 || ($2 == 10 && $3 > 0)) {print "    - " $0}' >> images.yaml
 # echo "    calico/node:" >> images.yaml
@@ -15,8 +17,8 @@ echo "  images:" >> images.yaml
 # skopeo list-tags --tls-verify=false  docker://docker.io/flannel/flannel | grep -v alpha | grep -v beta | grep -v rc | grep -v amd64 | grep -v ppc64le | grep -v arm64 | grep -v arm | grep -v s390x | grep -v SNAPSHOT | grep -v debug | grep -v master | grep -v main | grep -v \} | grep -v \] | grep -v \{ | grep -v Repository | grep -v Tags | grep -v dev | grep -v g | grep -v '-'| awk -F '"' '{print "    - "$2}' | sort -V  >> images.yaml
 # echo "    flannel/flannel-cni-plugin:" >> images.yaml
 # skopeo list-tags --tls-verify=false  docker://docker.io/flannel/flannel-cni-plugin | grep -v alpha | grep -v beta | grep -v rc | grep -v amd64 | grep -v ppc64le | grep -v arm64 | grep -v arm | grep -v s390x | grep -v SNAPSHOT | grep -v debug | grep -v master | grep -v main | grep -v \} | grep -v \] | grep -v \{ | grep -v Repository | grep -v Tags | grep -v dev | grep -v g | grep -v '-'| awk -F '"' '{print "    - "$2}' | sort -V >> images.yaml
-echo "    nacos/nacos-server:" >> images.yaml
-skopeo list-tags --tls-verify=false  docker://docker.io/nacos/nacos-server | grep '"v' | awk '/v1/ {flag=1} flag' | grep -v -E 'alpha|beta|rc|amd64|ppc64le|arm64|arm|s390x|SNAPSHOT|debug|master|main|\}|\]|\{|Repository|Tags|dev|g' | awk -F '"' '{print $2}' | sort -V | awk -F. '$1 == "v2" && ($2 > 0 || ($2 == 0 && $3 > 0)) {print "    - " $0}'  >> images.yaml
+# echo "    nacos/nacos-server:" >> images.yaml
+# skopeo list-tags --tls-verify=false  docker://docker.io/nacos/nacos-server | grep '"v' | awk '/v1/ {flag=1} flag' | grep -v -E 'alpha|beta|rc|amd64|ppc64le|arm64|arm|s390x|SNAPSHOT|debug|master|main|\}|\]|\{|Repository|Tags|dev|g' | awk -F '"' '{print $2}' | sort -V | awk -F. '$1 == "v2" && ($2 > 0 || ($2 == 0 && $3 > 0)) {print "    - " $0}'  >> images.yaml
 # echo "    apache/skywalking-java-agent:" >> images.yaml
 # skopeo list-tags --tls-verify=false  docker://docker.io/apache/skywalking-java-agent | grep -v alpha | grep -v beta | grep -v rc | grep -v amd64 | grep -v ppc64le | grep -v arm64 | grep -v arm | grep -v s390x | grep -v SNAPSHOT | grep -v debug | grep -v master | grep -v main | grep -v \} | grep -v \] | grep -v \{ | grep -v Repository | grep -v Tags | grep -v dev | grep -v g | awk -F '"' '{print "    - "$2}' | sort -V >> images.yaml
 # echo "    apache/skywalking-ui:" >> images.yaml
